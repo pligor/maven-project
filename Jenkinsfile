@@ -22,10 +22,10 @@ pipeline {
             }
         }
 
-        /*stage('Deploy') {
+        stage('Deploy to staging') {
             steps {
-                echo 'Code deployed'
+                build job: 'deploy_to_staging'
             }
-        }*/
+        }
     }
 }

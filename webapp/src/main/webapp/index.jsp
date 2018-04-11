@@ -1,1 +1,1 @@
-Hello, World!
+Say hello to my little friend
