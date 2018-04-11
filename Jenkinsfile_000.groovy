@@ -3,29 +3,22 @@ pipeline {
     agent any  // any available code
 
     stages {
-        /*stage('Init') {
+        stage('Init') {
             steps {
                 echo 'Testing...'
             }
-        }*/
+        }
 
         stage('Build') {
             steps {
-                sh 'mvn clean package'
-            }
-
-            post {
-                success {
-                    echo 'Now Archiving...'
-                    archiveArtifacts artifacts: '**/target/*.war'
-                }
+                echo 'Building...'
             }
         }
 
-        /*stage('Deploy') {
+        stage('Deploy') {
             steps {
                 echo 'Code deployed'
             }
-        }*/
+        }
     }
 }
