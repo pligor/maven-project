@@ -28,6 +28,7 @@ pipeline {
             parallel {
                 stage('deploy to staging') {
                     steps {
+                        sh "ls ~ -a"
                         sh "chmod 777 /home/student/.ssh/tomcat_dev.pem"
                         sh "scp -i /home/student/.ssh/tomcat_dev.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
                     }
