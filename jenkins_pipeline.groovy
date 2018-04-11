@@ -28,16 +28,16 @@ pipeline {
             parallel {
                 stage('deploy to staging') {
                     steps {
-                        sh "ls ~ -a"
-                        sh "chmod 777 /home/student/.ssh/tomcat_dev.pem"
-                        sh "scp -i /home/student/.ssh/tomcat_dev.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+                        //sh "ls ~ -a"  //we have confirmed that we are in the local computer
+                        //sh "chmod 777 /home/student/.ssh/tomcat_dev.pem"
+                        sh "scp -i /aws_pems/tomcat_dev.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
                     }
                 }
 
                 stage('deploy to production') {
                     steps {
-                        sh "chmod 777 /home/student/.ssh/tomcat_prod.pem"
-                        sh "scp -i /home/student/.ssh/tomcat_prod.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
+                        //sh "chmod 777 /home/student/.ssh/tomcat_prod.pem"
+                        sh "scp -i /aws_pems/tomcat_prod.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
                     }
                 }
             }
