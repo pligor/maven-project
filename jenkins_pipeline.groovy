@@ -28,14 +28,14 @@ pipeline {
             parallel {
                 stage('deploy to staging') {
                     steps {
-                        sh "chmod 400 /home/student/.ssh/tomcat_dev.pem"
+                        sh "chmod 777 /home/student/.ssh/tomcat_dev.pem"
                         sh "scp -i /home/student/.ssh/tomcat_dev.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
                     }
                 }
 
                 stage('deploy to production') {
                     steps {
-                        sh "chmod 400 /home/student/.ssh/tomcat_prod.pem"
+                        sh "chmod 777 /home/student/.ssh/tomcat_prod.pem"
                         sh "scp -i /home/student/.ssh/tomcat_prod.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
                     }
                 }
