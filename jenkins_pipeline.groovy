@@ -7,7 +7,7 @@ pipeline {
     }
 
     triggers {
-        pollSCM('* * * * *') //every minute for demo purposes (cron job)
+        pollSCM('H * * * *') //every hour (cron job configuration)
     }
 
     stages {
